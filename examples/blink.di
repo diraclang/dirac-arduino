@@ -15,9 +15,9 @@
   <output></output>
   
   <!-- Configure your board settings here -->
-  <defvar name="sketch" trim="true">/Users/zhiwang/diraclang/dirac-arduino/sketches/Blink</defvar>
-  <defvar name="board" trim="true">duemilanove</defvar>
-  <defvar name="port" trim="true">/dev/cu.usbserial-A800f88N</defvar>
+  <defvar name="sketch">/Users/zhiwang/diraclang/dirac-arduino/sketches/Blink</defvar>
+  <defvar name="board">duemilanove</defvar>
+  <defvar name="port">/dev/cu.usbserial-A800f88N</defvar>
   
   <output>2. Configuration:</output>
   <output>   Sketch: <variable name="sketch" /></output>
