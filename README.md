@@ -58,12 +58,34 @@ The `examples/` directory contains sample DIRAC scripts:
 - `blink.di` - Classic LED blink example
 - `serial-hello.di` - Serial communication demo
 - `sensor-read.di` - Read analog sensor values
+- `monitor-loop.di` - Continuous monitoring with named pipes
+- `monitor-timed.di` - Time-limited sensor data collection
 
 Each example includes:
 - Board detection
 - Compilation
 - Upload
 - Serial monitoring (where applicable)
+
+### Background Process Monitoring
+
+DIRAC supports background processes with `<system background="true">`. This is useful for long-running commands like Arduino monitoring:
+
+```xml
+<!-- Start monitor in background -->
+<system background="true">arduino-cli monitor -p $port > /tmp/arduino.log &</system>
+
+<!-- DIRAC continues immediately, monitor runs independently -->
+<output>Monitor started in background</output>
+
+<!-- Read the log file to process data -->
+<loop condition="true">
+  <system>tail -n 1 /tmp/arduino.log</system>
+  <output>Arduino: $SYSTEM_OUTPUT</output>
+</loop>
+```
+
+See `monitor-loop.di` and `monitor-timed.di` for complete examples.
 
 ### Running Examples
 
